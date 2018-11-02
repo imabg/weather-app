@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "country-data": "0.0.31",
     "vue": "^2.5.17"
   },
   "devDependencies": {

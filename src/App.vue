@@ -1,17 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <p class="display-3">Weather-App</p>
+      <SearchBar @retieve = "getValue"/>
+      <TempDetail
+        :dataValue = "dataValue"
+        :getData = "getData"
+        class="alignment"
+      />
+    </div>
+      <Myfooter />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
+import SearchBar from './components/SearchBar.vue';
+import TempDetail from './components/TempDetail.vue';
+import Myfooter from './components/footer.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    SearchBar,
+    TempDetail,
+    Myfooter
+  },
+  data() {
+    return {
+      dataValue: {},
+      getData: false,
+    };
+  },
+  methods: {
+    getValue(value) {
+      axios
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=439452958cde2bf996ff4137d7f1353d`)
+      .then(response => {
+        this.dataValue = response.data;
+      })
+      .catch(err => alert('Error'));
+      this.getData = true;
+    }
   }
 }
 </script>
@@ -24,5 +54,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.alignment  {
+  align-items: center;
 }
 </style>
