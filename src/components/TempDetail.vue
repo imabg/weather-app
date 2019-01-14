@@ -1,11 +1,11 @@
 <template>
   <div v-if = "getData" >
-    <div class="card" style="width: 18rem;">
+    <div class="card">
       <div class="card-body ">
-          Weather in <span class="card-title country"><strong>{{dataValue.name}}</strong></span> , {{dataValue.sys.country}}
+          Weather in <span class="card-title"><span class="country">{{dataValue.name}}</span></span>
          <div>
            <strong class="country">
-             <p style="margin-top = 5px;"> {{dataValue.main.temp - 273.15}}&degC </p>
+             <p style="margin-top = 5px;"> {{dataValue.main.temp - 273.15}} &degC </p>
            </strong>
            <p style="margin-top = 5px;">Description: {{dataValue.weather["0"].main}}</p>
            <p style="margin-top = 5px;">Pressure: {{dataValue.main.pressure}} hpa</p>
@@ -37,6 +37,24 @@ export default {
 
 <style scoped>
   .country {
-    font-size: 23px;
+    color: #000;
+    font-weight: 400;
+    text-decoration-line: underline;
+    font-family: 'Lato', sans-serif;
+
+  }
+
+  .card {
+    border: 1px solid blueviolet;
+    width: 90%;
+    text-align: center;
+    margin: 18px 8px;
+    padding: 12px;
+    background-color: #fff;
+  }
+
+  .card-body {
+    margin-left: 22px;
+    text-align: center;
   }
 </style>

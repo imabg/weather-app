@@ -1,5 +1,9 @@
 <template>
-  <input id="input" v-model = "value" @keyup.enter = "getValue" placeholder="Enter City Name"/>
+  <div>
+    <input id="input" v-model = "value" placeholder="city..."/>
+    <i class="fa fa-search" @click = "getValue"></i>
+  </div>
+
 </template>
 
 <script>
@@ -20,8 +24,19 @@ export default {
 
 <style scoped>
   #input {
-    font-size: 23px;
+    font-size: 18px;
+    border: none;
     font-family: cursive;
     text-align: center;
+    outline: none;
+    color: blueviolet;
+    display: inline-block;
+    width: 50%;
+  }
+  i {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
   }
 </style>

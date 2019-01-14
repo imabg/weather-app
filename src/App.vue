@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div class="container">
-      <p class="display-3">Weather-App</p>
+      <h1>Weather-App</h1>
       <SearchBar @retieve = "getValue"/>
-      <TempDetail
+      <TempDetail v-show="resPositive"
         :dataValue = "dataValue"
         :getData = "getData"
         class="alignment"
       />
     </div>
-      <Myfooter />
+      <Myfooter :resPositive = "resPositive"/>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     return {
       dataValue: {},
       getData: false,
+      resPositive: false
     };
   },
   methods: {
@@ -37,7 +38,9 @@ export default {
       axios
       .get(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=439452958cde2bf996ff4137d7f1353d`)
       .then(response => {
+        console.log(res);
         this.dataValue = response.data;
+        this.resPositive = true;
       })
       .catch(err => alert('Error'));
       this.getData = true;
@@ -57,5 +60,9 @@ export default {
 }
 .alignment  {
   align-items: center;
+}
+
+h1 {
+  color: blueviolet;
 }
 </style>
